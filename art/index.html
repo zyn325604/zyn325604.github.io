@@ -132,21 +132,25 @@
   gap: 10px;
 }
 .answer {
-  padding: 14px;
-  margin-bottom: 2px;
+  padding: 12px;
   background: white;
-  border: 1px solid #f0f0f0;
-  border-radius: 1px;
-  /* 移除所有动画相关属性 */
-  font-size: 16px;
-  line-height: 1;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  min-height: 18px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease-out;
+}
+.answer.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* 控制按钮 */
 #next-btn {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #2ecc71;
   color: white;
   border: none;
@@ -208,65 +212,40 @@ function startGame(mode) {
   loadCurrentArtwork();
 }
 
-// 加载当前作品（完全防止闪现）
 function loadCurrentArtwork() {
-  // 1. 首先立即清空所有答案显示
-  document.querySelectorAll('.answer').forEach(el => {
-    el.textContent = '';
-    el.style.visibility = 'hidden'; // 使用visibility而不是class
-  });
-
-  // 2. 清空图片（防止旧图闪现）
-  const imgElement = document.getElementById('art-image');
-  imgElement.src = '';
-  imgElement.style.visibility = 'hidden';
-
-  // 3. 获取新题目数据
   const art = gameState.displayArtworks[gameState.currentIndex];
   
-  // 4. 使用新Image对象预加载
-  const newImage = new Image();
-  newImage.onload = () => {
-    // 5. 确保所有内容一次性显示
-    imgElement.src = newImage.src;
-    imgElement.style.visibility = 'visible';
-    
-    // 设置答案数据（但不显示）
-    document.getElementById('title-answer').textContent = art.title;
-    document.getElementById('author-answer').textContent = art.author;
-    document.getElementById('year-answer').textContent = art.year;
-    
-    // 确保答案区域保持隐藏
-    document.querySelectorAll('.answer').forEach(el => {
-      el.style.visibility = 'hidden';
-    });
-  };
+  // 设置图片
+  document.getElementById('art-image').src = `/images/art/${art.image}`;
   
-  newImage.src = `/images/art/${art.image}`;
+  // 清空并隐藏所有答案（但保留三个格子）
+  document.querySelectorAll('.answer').forEach(el => {
+    el.textContent = '';       // 清空内容
+    el.classList.remove('show'); // 移除显示状态
+  });
+  
+  // 保存当前作品信息
+  gameState.currentArt = art;
+  gameState.answered = false; // 重置当前题目的回答状态
+  
   updateFavoriteButton();
 }
-
-// 修改按钮点击事件
+// 修改按钮点击事件（放在初始化部分）
 document.querySelectorAll('.info-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     const type = this.dataset.type;
     const answerEl = document.getElementById(`${type}-answer`);
-    answerEl.style.visibility = 'visible'; // 直接显示
+    
+    // 如果当前答案已经显示，则不做任何操作
+    if (answerEl.classList.contains('show')) return;
+    
+    // 从保存的作品信息中获取答案并显示
+    answerEl.textContent = gameState.currentArt[type];
+    answerEl.classList.add('show');
+    gameState.answered = true; // 标记当前题目已作答
   });
 });
 
-// next按钮事件
-document.getElementById('next-btn').addEventListener('click', function() {
-  // 先立即隐藏所有答案
-  document.querySelectorAll('.answer').forEach(el => {
-    el.style.visibility = 'hidden';
-  });
-  
-  // 然后切换题目
-  gameState.currentIndex = (gameState.currentIndex + 1) % gameState.displayArtworks.length;
-  updateProgress();
-  loadCurrentArtwork();
-});
 // 其他函数保持不变...
 function nextArtwork() {
   gameState.currentIndex = (gameState.currentIndex + 1) % gameState.displayArtworks.length;
