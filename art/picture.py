@@ -16,7 +16,7 @@ for filename in os.listdir(source_folder):
             num = ''.join([c for c in filename if c.isdigit()])
             
             # 构建新文件名
-            new_name = f"art_{num}.jpeg"
+            new_name = f"art_{num}.jpg"
             
             # 打开图片并保存为新格式
             img = Image.open(os.path.join(source_folder, filename))
