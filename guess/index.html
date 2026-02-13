@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>zyn's blog | zyn's blog</title><meta name="author" content="zyn"><meta name="copyright" content="zyn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="猜数字                        :root { --main-bg: #f4f7f6; --card-bg: #ffffff; --text: #2c3e50; --player: #3498db; --comp: #e67e22; }         body { background-color: var(--main-bg) !impo">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zyn&#39;s blog">
+<meta property="og:url" content="https://zyn325604.github.io/guess/index.html">
+<meta property="og:site_name" content="zyn&#39;s blog">
+<meta property="og:description" content="猜数字                        :root { --main-bg: #f4f7f6; --card-bg: #ffffff; --text: #2c3e50; --player: #3498db; --comp: #e67e22; }         body { background-color: var(--main-bg) !impo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyn325604.github.io/images/touxiang.jpg">
+<meta property="article:published_time" content="2026-02-13T13:56:39.138Z">
+<meta property="article:modified_time" content="2026-02-13T13:56:39.138Z">
+<meta property="article:author" content="zyn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyn325604.github.io/images/touxiang.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/images/tubiao.jpg"><link rel="canonical" href="https://zyn325604.github.io/guess/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'zyn\'s blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><style>.search-popup hr{display:none}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/images/beijing.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">zyn's blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>猜数字</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        :root { --main-bg: #f4f7f6; --card-bg: #ffffff; --text: #2c3e50; --player: #3498db; --comp: #e67e22; }
+        body { background-color: var(--main-bg) !important; color: var(--text) !important; font-family: sans-serif; margin: 0; padding: 15px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 450px; }
+        .card { background: var(--card-bg); border-radius: 15px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        h2 { text-align: center; color: #34495e; margin-bottom: 20px; }
+        .section-title { font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; }
+        .dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        
+        /* 优化输入框，让占位符更美观 */
+        input { width: calc(100% - 24px); padding: 14px 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; text-align: center; outline: none; transition: border-color 0.3s; }
+        input:focus { border-color: var(--player); }
+        input::placeholder { color: #aaa; font-size: 0.9em; letter-spacing: 0; }
+
+        button { width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        
+        .btn-p { background: var(--player); color: white; }
+        .btn-c { background: var(--comp); color: white; margin-top: 10px; }
+        .btn-p:disabled, .btn-c:disabled { background: #bdc3c7; opacity: 0.7; }
+
+        .res-box { background: #fdfdfd; padding: 15px; border-radius: 10px; border: 1px solid #edf2f7; margin-top: 10px; text-align: center; font-size: 1.1em; }
+        #comp-guess-val b { color: #e74c3c; font-size: 1.5em; letter-spacing: 2px; }
+        
+        #log { background: #2c3e50; color: #2ecc71; padding: 12px; border-radius: 10px; font-family: monospace; font-size: 12px; height: 140px; overflow-y: auto; margin-top: 10px; }
+        py-loading { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>猜数字</h2>
+
+    <div class="card" style="border-bottom: 4px solid var(--player);">
+        <div class="section-title"><span class="dot" style="background:var(--player)"></span> 你的回合</div>
+        <input type="text" id="user-input" placeholder="请在这里输入4位数字猜测" maxlength="4">
+        <button class="btn-p" id="btn-p" py-click="player_action">提交猜测</button>
+        <div class="res-box" id="player-res">等待你出手...</div>
+    </div>
+
+    <div class="card" style="border-bottom: 4px solid var(--comp);">
+        <div class="section-title"><span class="dot" style="background:var(--comp)"></span> 电脑的猜测</div>
+        <div class="res-box" id="comp-guess-val">等待轮到电脑...</div>
+        
+        <div id="feedback-area" style="display:none; margin-top:15px; padding-top:15px; border-top: 1px solid #eee;">
+            <input type="number" id="feedback-num" placeholder="它对了几位？(反馈给电脑 0-4)" min="0" max="4">
+            <button class="btn-c" py-click="comp_feedback_action">确认反馈，进入下一轮</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div id="log"></div>
+        <button style="background:#95a5a6; color:white; margin-top:15px;" py-click="reset_game">🔄 重新开局</button>
+    </div>
+</div>
+
+<script type="py">
+import random
+import asyncio
+from itertools import permutations
+from pyscript import document
+
+state = {"mynum": "", "candidates": [], "cur_guess": "", "over": False}
+
+def add_log(msg):
+    log = document.querySelector("#log")
+    log.innerHTML = f"<div>> {msg}</div>" + log.innerHTML
+
+def reset_game(e=None):
+    state["mynum"] = "".join(map(str, random.sample(range(10), 4)))
+    state["candidates"] = [''.join(p) for p in permutations('0123456789', 4)]
+    state["over"] = False
+    state["cur_guess"] = ""
+    
+    document.querySelector("#log").innerHTML = ""
+    document.querySelector("#player-res").innerText = "等待你出手..."
+    document.querySelector("#comp-guess-val").innerText = "等待轮到电脑..."
+    document.querySelector("#feedback-area").style.display = "none"
+    document.querySelector("#btn-p").disabled = False
+    document.querySelector("#user-input").value = ""
+    add_log("游戏已重置。")
+
+async def player_action(e):
+    if state["over"]: return
+    val = document.querySelector("#user-input").value.strip()
+    if len(val) != 4 or not val.isdigit():
+        document.querySelector("#player-res").innerText = "请输入4个数字"
+        return
+    
+    # 1. 处理玩家结果
+    res = sum(1 for i in range(4) if val[i] == state["mynum"][i])
+    document.querySelector("#player-res").innerHTML = f"你猜 {val}：<b>对了 {res} 位</b>"
+    add_log(f"你猜 {val} -> 对了 {res}")
+    
+    if res == 4:
+        add_log("你赢了！")
+        state["over"] = True
+        document.querySelector("#btn-p").disabled = True
+        return
+
+    # 2. 自动切换到电脑回合
+    document.querySelector("#btn-p").disabled = True
+    document.querySelector("#comp-guess-val").innerText = "电脑正在思考..."
+    
+
+    
+    if not state["candidates"]:
+        document.querySelector("#comp-guess-val").innerText = "线索矛盾，请重新开始"
+        return
+
+    state["cur_guess"] = random.choice(state["candidates"])
+    document.querySelector("#comp-guess-val").innerHTML = f"电脑猜测：<b>{state['cur_guess']}</b>"
+    document.querySelector("#feedback-area").style.display = "block"
+
+def comp_feedback_action(e):
+    fb_val = document.querySelector("#feedback-num").value
+    if fb_val == "": return
+    
+    fb = int(fb_val)
+    add_log(f"电脑猜 {state['cur_guess']} -> 反馈 {fb}")
+    
+    if fb == 4:
+        add_log("电脑先猜到了！")
+        state["over"] = True
+        document.querySelector("#feedback-area").style.display = "none"
+    else:
+        state["candidates"] = [c for c in state["candidates"] if sum(1 for i in range(4) if state['cur_guess'][i] == c[i]) == fb]
+        
+        document.querySelector("#feedback-area").style.display = "none"
+        document.querySelector("#btn-p").disabled = False
+        document.querySelector("#user-input").value = ""
+        document.querySelector("#player-res").innerText = "轮到你猜了..."
+        document.querySelector("#comp-guess-val").innerText = "等待你提交..."
+        document.querySelector("#feedback-num").value = ""
+
+reset_game()
+</script>
+
+</body>
+</html></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">zyn</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/misc/"><span class="card-category-list-name">misc</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div></div></div></main><footer id="footer" style="background-color: rgba(0,0,0,0);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By zyn</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
